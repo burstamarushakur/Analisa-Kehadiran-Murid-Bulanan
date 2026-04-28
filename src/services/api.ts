@@ -49,6 +49,7 @@ export async function validatePassword(kelas_id: string, kata_laluan: string): P
   try {
     const response = await fetch(BASE_URL, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'validatePassword',
         kelas_id,
@@ -56,10 +57,23 @@ export async function validatePassword(kelas_id: string, kata_laluan: string): P
       })
     });
     const result = await response.json();
-    return result.ok && result.valid === true;
+    console.log("VALIDATE PASSWORD RESPONSE:", result);
+
+    if (result === true) return true;
+
+    if (result && typeof result === "object") {
+      return (
+        result.valid === true ||
+        result.data === true ||
+        result.result === true ||
+        (result.ok === true && result.valid !== false)
+      );
+    }
+
+    return false;
   } catch (error) {
     console.error('Error validating password:', error);
-    throw error;
+    throw new Error("Ralat sambungan sistem. Sila cuba lagi.");
   }
 }
 

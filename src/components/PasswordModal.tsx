@@ -35,7 +35,7 @@ export function PasswordModal({ classId, className, isOpen, onClose, onSuccess }
         setError('Kata laluan salah. Sila cuba lagi.');
       }
     } catch (err: any) {
-      setError('Ralat sistem. Sila cuba sebentar lagi.');
+      setError(err.message || 'Ralat sambungan sistem. Sila cuba lagi.');
     } finally {
       setIsSubmitting(false);
     }

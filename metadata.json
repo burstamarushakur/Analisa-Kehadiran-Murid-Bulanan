@@ -1,0 +1,6 @@
+{
+  "name": "Analisa Kehadiran Murid",
+  "description": "Sistem Dashboard Tahunan bagi pemantauan kehadiran murid sekolah, memaparkan status pengisian bulanan bagi setiap kelas dalam bentuk matriks matriks Kelas vs Bulan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
